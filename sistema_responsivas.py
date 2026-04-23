@@ -950,14 +950,14 @@ class AplicacionResponsivas:
         self.entry_nombre.pack(side="left", fill="x", expand=True, padx=(0, 10))
         self.entry_nombre.bind('<Return>', lambda e: self.buscar_empleado())
         
-        ttk.Button(frame_input, text="🔍 Buscar", command=self.buscar_empleado, 
+        ttk.Button(frame_input, text="Buscar", command=self.buscar_empleado,
                   width=15).pack(side="left")
         
-        ttk.Button(frame_input, text="📋 Ver Todos", command=self.ver_todos_usuarios, 
+        ttk.Button(frame_input, text="Ver Todos", command=self.ver_todos_usuarios,
                   width=15).pack(side="left", padx=(5, 0))
         
         # === INFORMACIÓN ===
-        frame_info = ttk.LabelFrame(self.root, text=" Información del Empleado ", padding=15)
+        frame_info = ttk.LabelFrame(self.root, text="Información del Empleado ", padding=15)
         frame_info.pack(fill="both", expand=True, padx=20, pady=10)
         
         # Crear un frame con scrollbar
@@ -985,14 +985,14 @@ class AplicacionResponsivas:
         frame_botones = ttk.Frame(self.root, padding=10)
         frame_botones.pack(fill="x", padx=20, pady=10)
         
-        ttk.Button(frame_botones, text="📊 Generar Excel", 
+        ttk.Button(frame_botones, text="Generar Excel",
                   command=self.generar_excel, width=22).pack(side="left", padx=5)
         
         if REPORTLAB_AVAILABLE:
-            ttk.Button(frame_botones, text="📄 Generar PDF", 
+            ttk.Button(frame_botones, text="Generar PDF",
                       command=self.generar_pdf, width=22).pack(side="left", padx=5)
         
-        ttk.Button(frame_botones, text="📂 Abrir Carpeta", 
+        ttk.Button(frame_botones, text="Abrir Carpeta",
                   command=self.abrir_carpeta, width=22).pack(side="left", padx=5)
         
         # === BARRA DE ESTADO ===
@@ -1014,7 +1014,7 @@ class AplicacionResponsivas:
             if not self.datos_actual:
                 messagebox.showinfo("No encontrado", 
                                    f"No se encontró ningún empleado con el nombre:\n'{nombre}'")
-                self.label_info.config(text="❌ Empleado no encontrado")
+                self.label_info.config(text="Empleado no encontrado")
                 self.datos_actual = None
                 return
             
@@ -1025,7 +1025,7 @@ class AplicacionResponsivas:
             
         except Exception as e:
             messagebox.showerror("Error", f"Error al buscar empleado:\n{str(e)}")
-            self.label_estado.config(text="❌ Error en la búsqueda")
+            self.label_estado.config(text="Error en la búsqueda")
     
     def _formatear_info(self, datos):
         """Formatea la información para mostrar"""
@@ -1075,7 +1075,7 @@ class AplicacionResponsivas:
             return
         
         try:
-            self.label_estado.config(text="⏳ Generando Excel...")
+            self.label_estado.config(text="Generando Excel...")
             self.root.update()
             
             nombre_archivo = f"Responsiva_{self.datos_actual['nombre_usuario'].replace(' ', '_')}_{datetime.now().strftime('%Y%m%d_%H%M%S')}.xlsx"
@@ -1099,7 +1099,7 @@ class AplicacionResponsivas:
             
         except Exception as e:
             messagebox.showerror("Error", f"Error al generar Excel:\n{str(e)}")
-            self.label_estado.config(text="❌ Error al generar Excel")
+            self.label_estado.config(text="Error al generar Excel")
     
     def generar_pdf(self):
         """Genera documento PDF"""
@@ -1136,7 +1136,7 @@ class AplicacionResponsivas:
             
         except Exception as e:
             messagebox.showerror("Error", f"Error al generar PDF:\n{str(e)}")
-            self.label_estado.config(text="❌ Error al generar PDF")
+            self.label_estado.config(text="Error al generar PDF")
     
     def ver_todos_usuarios(self):
         """Muestra ventana con lista de todos los usuarios"""
